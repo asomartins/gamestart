@@ -3,6 +3,8 @@ package gamestart.ui;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import static gamestart.servicos.VendaServico.*;
+
 public class MenuAdmin {
     /**
      * Função para exibir as opções para o menu ADMIN
@@ -29,7 +31,7 @@ public class MenuAdmin {
 
             switch (opcao) {
                 case "1":
-
+                    exibirVendas();
                     break;
                 case "2":
 

@@ -34,11 +34,9 @@ public class MenuCliente {
                     inserirNovoCliente();
                     break;
                 case "2":
-                    System.out.println("\n************************     Vagas     ************************\n");
                     verificarVagasEstacionamento();
                     break;
                 case "3":
-                    System.out.println("\n************************     Jogos     ************************\n");
                     exibirTitulosJogos();
                     break;
                 case "4":

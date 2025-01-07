@@ -13,8 +13,9 @@ public class JogoServico {
      */
     public static void exibirTitulosJogos() throws FileNotFoundException {
 
+
         //Ler ficheiro
-        File ficheiroJogos = new File("projeto/GameStart_V2.csv");
+        File ficheiroJogos = new File("projeto/vendas/GameStart_V2.csv");
 
         //Primeiro leitor para determinar o número de linhas
         Scanner scannerLinhas = new Scanner(ficheiroJogos);
@@ -65,6 +66,8 @@ public class JogoServico {
             }
         }
 
+        System.out.println("\n************************     Jogos     ************************\n");
+
         //Ciclo para exibir a matriz de títulos de jogos não duplicados
         for (int j = 0; j < contadorTitulosAdicionados; j++) {
             System.out.println(matrizTitulosJogos[j][0]);
@@ -84,7 +87,7 @@ public class JogoServico {
     public static void exibirJogosPorEditora(String inputEditora) throws FileNotFoundException {
 
         //Ler ficheiro
-        File ficheiroJogos = new File("projeto/GameStart_V2.csv");
+        File ficheiroJogos = new File("projeto/vendas/GameStart_V2.csv");
 
         //Primeiro leitor para determinar o número de linhas
         Scanner scannerLinhas = new Scanner(ficheiroJogos);
