@@ -31,11 +31,10 @@ public class MenuAdmin {
 
             switch (opcao) {
                 case "1":
-                    exibirVendas();
+                    exibirConteudoVendas();
                     break;
                 case "2":
-
-
+                    exibirTotalVendas();
                     break;
                 case "3":
 

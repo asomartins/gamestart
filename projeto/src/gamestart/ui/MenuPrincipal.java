@@ -43,7 +43,7 @@ public class MenuPrincipal {
                 Scanner inputSenha = new Scanner(System.in);
                 System.out.print("Insira a senha: ");
                 String senha = inputSenha.next();
-                if (senha.equals("cesaejava")) {
+                if (senha.equals("cesae")) {
                     System.out.println("Olá, admin.");
                     exibirMenuAdmin();
                 } else {

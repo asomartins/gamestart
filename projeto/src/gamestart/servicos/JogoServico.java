@@ -15,7 +15,7 @@ public class JogoServico {
 
 
         //Ler ficheiro
-        File ficheiroJogos = new File("projeto/vendas/GameStart_V2.csv");
+        File ficheiroJogos = new File("projeto/clientes/GameStart_V2.csv");
 
         //Primeiro leitor para determinar o número de linhas
         Scanner scannerLinhas = new Scanner(ficheiroJogos);
@@ -87,7 +87,7 @@ public class JogoServico {
     public static void exibirJogosPorEditora(String inputEditora) throws FileNotFoundException {
 
         //Ler ficheiro
-        File ficheiroJogos = new File("projeto/vendas/GameStart_V2.csv");
+        File ficheiroJogos = new File("projeto/clientes/GameStart_V2.csv");
 
         //Primeiro leitor para determinar o número de linhas
         Scanner scannerLinhas = new Scanner(ficheiroJogos);
