@@ -7,12 +7,12 @@ import static gamestart.servicos.VendaServico.*;
 
 public class MenuAdmin {
     /**
-     * Função para exibir as opções para o menu ADMIN
+     * Função para exibir as opções do menu ADMIN
      *
      * @throws FileNotFoundException
      */
     public static void exibirMenuAdmin() throws FileNotFoundException {
-        String opcao, inputEditora;
+        String opcao;
 
         do {
             System.out.println("\n***************************************************************");
@@ -37,7 +37,7 @@ public class MenuAdmin {
                     exibirTotalVendas();
                     break;
                 case "3":
-
+                    calcularLucroTotal();
                     break;
                 case "4":
 

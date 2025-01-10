@@ -9,7 +9,7 @@ import static gamestart.servicos.JogoServico.*;
 
 public class MenuCliente {
     /**
-     * Função para exibir as opções para o menu CLIENTE
+     * Função para exibir as opções do menu CLIENTE
      *
      * @throws FileNotFoundException
      */

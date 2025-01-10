@@ -6,22 +6,21 @@ import java.util.Scanner;
 
 public class JogoServico {
 
-    /**
+     /**
      * Função para exibir todos os títulos de jogos disponíveis (sem repetições)
      *
      * @throws FileNotFoundException
      */
     public static void exibirTitulosJogos() throws FileNotFoundException {
 
-
-        //Ler ficheiro
-        File ficheiroJogos = new File("projeto/clientes/GameStart_V2.csv");
+        //Caminho do ficheiro
+        File ficheiroVendas = new File(VendaServico.obterFicheiroVendas());
 
         //Primeiro leitor para determinar o número de linhas
-        Scanner scannerLinhas = new Scanner(ficheiroJogos);
+        Scanner scannerLinhas = new Scanner(ficheiroVendas);
 
         //Segundo leitor para realizar a leitura do ficheiro normalmente
-        Scanner scanner = new Scanner(ficheiroJogos);
+        Scanner scanner = new Scanner(ficheiroVendas);
 
         String linha, linha2, tituloJogo;
 
@@ -29,7 +28,6 @@ public class JogoServico {
 
         //Linha de cabeçalho do primeiro leitor
         linha = scannerLinhas.nextLine();
-
 
         //ciclo para contar o número de linhas que vai ser utilizado na matriz de títulos de jogos que será criada
         while (scannerLinhas.hasNextLine()) {
@@ -86,14 +84,14 @@ public class JogoServico {
      */
     public static void exibirJogosPorEditora(String inputEditora) throws FileNotFoundException {
 
-        //Ler ficheiro
-        File ficheiroJogos = new File("projeto/clientes/GameStart_V2.csv");
+        //Caminho do ficheiro
+        File ficheiroVendas = new File(VendaServico.obterFicheiroVendas());
 
         //Primeiro leitor para determinar o número de linhas
-        Scanner scannerLinhas = new Scanner(ficheiroJogos);
+        Scanner scannerLinhas = new Scanner(ficheiroVendas);
 
         //Segundo leitor para realizar a leitura do ficheiro normalmente
-        Scanner scanner = new Scanner(ficheiroJogos);
+        Scanner scanner = new Scanner(ficheiroVendas);
 
         String linha, linha2, editora, categoria, tituloJogo;
 
@@ -186,6 +184,7 @@ public class JogoServico {
             }
         }
 
+        //Fecha os leitores
         scannerLinhas.close();
         scanner.close();
     }

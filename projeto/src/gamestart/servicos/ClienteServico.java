@@ -8,7 +8,9 @@ import java.util.Scanner;
 public class ClienteServico {
 
     /**
-     * Função para registrar um novo cliente
+     * Função para inserir um novo cliente
+     *
+     * @throws FileNotFoundException
      */
     public static void inserirNovoCliente() throws FileNotFoundException {
         System.out.println("\n***************************************************************");
@@ -31,7 +33,7 @@ public class ClienteServico {
         //Máquina para escrever no ficheiro
         PrintWriter maquinaEscrever = new PrintWriter(ficheiroCliente);
 
-        //Conteudo do ficheiro
+        //Conteúdo do ficheiro
         String registroCliente = "Nome do cliente: " + nomeCliente + "\nContacto: " + contatoCliente + "\nE-mail: " + emailCliente;
 
         //Imprimir no ficheiro

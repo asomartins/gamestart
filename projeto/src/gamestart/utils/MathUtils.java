@@ -11,7 +11,7 @@ public class MathUtils {
         int soma = 0;
 
         for (int contador = 1; contador < num; contador++) {
-            soma += contador;    //soma = soma + contador
+            soma += contador;
             if (soma == num) {
                 return true;
             }

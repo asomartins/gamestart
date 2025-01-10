@@ -9,8 +9,9 @@ import static gamestart.ui.MenuCliente.*;
 public class MenuPrincipal {
 
     /**
-     * Função para exibir o menu de seleção tipo de usuário
+     * Função para exibir o menu de seleção do tipo de usuário
      *
+     * @throws FileNotFoundException
      */
     public static void exibirMenuTipoUsuario() throws FileNotFoundException {
         String opcao;
@@ -32,7 +33,7 @@ public class MenuPrincipal {
     }
 
     /**
-     * Função para exibir as opções de acordo com o usuário selecionado
+     * Função para exibir as opções de menu de acordo com o usuário selecionado
      *
      * @param opcao
      * @throws FileNotFoundException
