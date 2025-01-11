@@ -1,11 +1,11 @@
 import java.io.FileNotFoundException;
+
 import static gamestart.ui.MenuPrincipal.*;
 
 public class GameStartMain {
 
     /**
-     * Função principal que exibe as opções do menu inicial para selecionar o tipo de usuário
-     *
+     * Função principal que exibe o menu inicial para selecionar o tipo de usuário
      */
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -33,6 +33,6 @@ public class GameStartMain {
                 "                                                                                                                                                                                            \n" +
                 "                                                                                                                                                                                            \n");
 
-            exibirMenuTipoUsuario();
+        exibirMenuTipoUsuario();
     }
 }

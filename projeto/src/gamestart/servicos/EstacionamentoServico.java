@@ -6,7 +6,6 @@ public class EstacionamentoServico {
 
     /**
      * Função para verificar as vagas de estacionamento disponíveis
-     *
      */
     public static void verificarVagasEstacionamento() {
         int tamanho = 0, contador = 0;
@@ -20,8 +19,8 @@ public class EstacionamentoServico {
         for (int num = 1; num <= 121; num++) {
             //verifica se o número é triangular e múltiplo de 5
             if (numeroTriangular(num) && (num % 5 == 0)) {
-                    tamanho++;
-                }
+                tamanho++;
+            }
         }
 
         int[] vagas = new int[tamanho];
@@ -29,9 +28,9 @@ public class EstacionamentoServico {
         //repete o ciclo anterior e preenche o array já com um tamanho definido
         for (int num = 1; num <= 121; num++) {
             if (numeroTriangular(num) && (num % 5 == 0)) {
-                    vagas[contador] = num;
-                    contador++;
-                }
+                vagas[contador] = num;
+                contador++;
+            }
         }
 
         //imprime os elementos do array preenchido

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class JogoServico {
 
-     /**
+    /**
      * Função para exibir todos os títulos de jogos disponíveis (sem repetições)
      *
      * @throws FileNotFoundException
@@ -107,7 +107,7 @@ public class JogoServico {
         }
 
         //Matriz para editoras, categorias e títulos de jogos
-        String[][] matrizEditoraCategoriaTituloJogos =  new String[numeroLinhas][3];
+        String[][] matrizEditoraCategoriaTituloJogos = new String[numeroLinhas][3];
 
         //Arrays para rastrear editoras e categorias únicas
         String[] editorasExibidas = new String[numeroLinhas];
@@ -174,11 +174,12 @@ public class JogoServico {
 
                 //Se a categoria ainda não foi exibida, imprime a categoria
                 if (!categoriaJaExibida) {
-                    System.out.println("\n_____   " + matrizEditoraCategoriaTituloJogos[linhaMatriz][1] + "   _____" );
+                    System.out.println("\n_____   " + matrizEditoraCategoriaTituloJogos[linhaMatriz][1] + "   _____");
                     categoriasExibidas[contadorCategoriasAdicionadas] = matrizEditoraCategoriaTituloJogos[linhaMatriz][1];
                     contadorCategoriasAdicionadas++;
                 }
 
+                //Imprime os títulos dos jogos
                 System.out.println(matrizEditoraCategoriaTituloJogos[linhaMatriz][2]);
 
             }

@@ -31,7 +31,7 @@ public class VendaServico {
         String linha;
 
         //Ciclo para ler o ficheiro
-        while(scanner.hasNextLine()) {
+        while (scanner.hasNextLine()) {
             linha = scanner.nextLine();
             System.out.println(linha);
         }
@@ -58,14 +58,14 @@ public class VendaServico {
         double valorJogo, totalVendas = 0;
 
         //Ciclo para percorrer as linhas do ficheiro, somar os valores dos jogos e obter a quantidade de vendas
-        while(leitor.hasNextLine()){
+        while (leitor.hasNextLine()) {
             linha = leitor.nextLine();
             String[] itensLinha = linha.split(";");
             valorJogo = Double.parseDouble(itensLinha[8]);
             totalVendas += valorJogo;
             contadorVendas++;
         }
-        System.out.println("Número total de vendas: " +contadorVendas);
+        System.out.println("Número total de vendas: " + contadorVendas);
         System.out.printf("Valor total de vendas: %.2f€ %n", +totalVendas);
 
         //Fecha o leitor
@@ -91,7 +91,7 @@ public class VendaServico {
         double valorJogo, totalVendas = 0, totalVendasLucro = 0, lucroTotal;
 
         //Ciclo para percorrer o ficheiro, somar os valores dos jogos para obter o total de vendas
-        while(leitor.hasNextLine()){
+        while (leitor.hasNextLine()) {
             linha = leitor.nextLine();
             String[] itensLinha = linha.split(";");
             valorJogo = Double.parseDouble(itensLinha[8]);

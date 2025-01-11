@@ -15,6 +15,7 @@ public class MenuCliente {
      */
     public static void exibirMenuCliente() throws FileNotFoundException {
         String opcao, inputEditora;
+        Scanner inputUser = new Scanner(System.in);
 
         do {
             System.out.println("\n***************************************************************");
@@ -26,8 +27,7 @@ public class MenuCliente {
             System.out.println("5. Voltar ao menu inicial");
             System.out.println("***************************************************************");
             System.out.print("Digite a opção: ");
-            Scanner inputUserMenu = new Scanner(System.in);
-            opcao = inputUserMenu.next();
+            opcao = inputUser.nextLine();
 
             switch (opcao) {
                 case "1":
@@ -40,9 +40,8 @@ public class MenuCliente {
                     exibirTitulosJogos();
                     break;
                 case "4":
-                    Scanner inputUserEditora = new Scanner(System.in);
                     System.out.print("Insira a editora: ");
-                    inputEditora = inputUserEditora.nextLine();
+                    inputEditora = inputUser.nextLine();
                     exibirJogosPorEditora(inputEditora);
                     break;
                 case "5":
@@ -50,7 +49,6 @@ public class MenuCliente {
                 default:
                     System.out.println("Opção inválida.\n");
             }
-
         } while (!opcao.equals("5"));
     }
 }

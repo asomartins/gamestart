@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static gamestart.servicos.VendaServico.*;
+import static gamestart.servicos.ClienteServico.*;
 
 public class MenuAdmin {
     /**
@@ -12,7 +13,8 @@ public class MenuAdmin {
      * @throws FileNotFoundException
      */
     public static void exibirMenuAdmin() throws FileNotFoundException {
-        String opcao;
+        String opcao, inputIdCliente;
+        Scanner inputUser = new Scanner(System.in);
 
         do {
             System.out.println("\n***************************************************************");
@@ -26,8 +28,7 @@ public class MenuAdmin {
             System.out.println("7. Voltar ao menu inicial");
             System.out.println("***************************************************************");
             System.out.print("Digite a opção: ");
-            Scanner inputUserMenu = new Scanner(System.in);
-            opcao = inputUserMenu.next();
+            opcao = inputUser.nextLine();
 
             switch (opcao) {
                 case "1":
@@ -40,7 +41,9 @@ public class MenuAdmin {
                     calcularLucroTotal();
                     break;
                 case "4":
-
+                    System.out.print("Insira o id do cliente: ");
+                    inputIdCliente = inputUser.nextLine();
+                    exibirInformacoesCliente(inputIdCliente);
                     break;
                 case "5":
                     break;
