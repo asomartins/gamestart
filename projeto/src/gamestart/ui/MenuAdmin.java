@@ -6,6 +6,7 @@ import java.util.Scanner;
 import static gamestart.servicos.VendaServico.*;
 import static gamestart.servicos.ClienteServico.*;
 import static gamestart.servicos.JogoServico.*;
+import static gamestart.ui.MenuPrincipal.exibirMenuTipoUsuario;
 
 public class MenuAdmin {
     /**
@@ -20,12 +21,12 @@ public class MenuAdmin {
         do {
             System.out.println("\n***************************************************************");
             System.out.println("::: Menu - ADMIN :::");
-            System.out.println("1. Exibir vendas");
+            System.out.println("1. Imprimir ficheiro");
             System.out.println("2. Exibir total de vendas e valor total acumulado");
             System.out.println("3. Calcular lucro total");
-            System.out.println("4. Exibir informações de clientes");
-            System.out.println("5. Exibir jogo mais caro - clientes que compraram");
-            System.out.println("6. Exibir melhor cliente - jogos comprados");
+            System.out.println("4. Exibir informações de cliente");
+            System.out.println("5. Exibir jogo mais caro e clientes que compraram");
+            System.out.println("6. Exibir o melhor cliente e lista de jogos comprados");
             System.out.println("7. Voltar ao menu inicial");
             System.out.println("***************************************************************");
             System.out.print("Digite a opção: ");
@@ -51,10 +52,10 @@ public class MenuAdmin {
                     break;
                 case "6":
                     exibirMelhorCliente();
-
                     break;
                 case "7":
-                    break;
+                    System.out.println("Opção selecionada: Voltar ao menu inicial");
+                    return;
                 default:
                     System.out.println("Opção inválida.\n");
             }

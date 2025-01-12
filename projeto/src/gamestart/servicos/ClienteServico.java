@@ -74,7 +74,7 @@ public class ClienteServico {
                 emailCliente = itensLinha[4];
 
                 //Imprime a informação do cliente
-                System.out.println("\n************************     Cliente     ************************\n");
+                System.out.println("\n***********************     Cliente     ***********************\n");
                 System.out.println("Nome do cliente: " + nomeCliente + "\nContacto: " + contactoCliente + "\nE-mail: " + emailCliente);
                 break;
             }
@@ -192,7 +192,7 @@ public class ClienteServico {
         }
 
         //Imprime a informação do melhor cliente
-        System.out.println("\n*******************     Melhor Cliente     *******************\n");
+        System.out.println("\n*******************     Melhor Cliente     ********************\n");
         System.out.println("Nome do cliente: " + nomeCliente);
         System.out.println("Contacto: " + contactoCliente);
         System.out.println("E-mail: " + emailCliente);

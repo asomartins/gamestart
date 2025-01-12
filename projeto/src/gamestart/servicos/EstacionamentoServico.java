@@ -10,7 +10,7 @@ public class EstacionamentoServico {
     public static void verificarVagasEstacionamento() {
         int tamanho = 0, contador = 0;
 
-        System.out.println("\n************************     Vagas     ************************\n");
+        System.out.println("\n******************     Vagas Disponíveis     ******************\n");
 
         // Critério fornecido: números triangulares múltiplos de 5, limitados a 121 vagas
 

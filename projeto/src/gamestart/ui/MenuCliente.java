@@ -45,7 +45,8 @@ public class MenuCliente {
                     exibirJogosPorEditora(inputEditora);
                     break;
                 case "5":
-                    break;
+                    System.out.println("Opção selecionada: Voltar ao menu inicial");
+                    return;
                 default:
                     System.out.println("Opção inválida.\n");
             }

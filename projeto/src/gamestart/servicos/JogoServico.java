@@ -64,7 +64,7 @@ public class JogoServico {
             }
         }
 
-        System.out.println("\n************************     Jogos Disponíveis     ************************\n");
+        System.out.println("\n******************     Jogos Disponíveis     ******************\n");
 
         //Ciclo para exibir a matriz de títulos de jogos não duplicados
         for (int j = 0; j < contadorTitulosAdicionados; j++) {
@@ -74,7 +74,6 @@ public class JogoServico {
         scannerLinhas.close();
         scanner.close();
     }
-
 
     /**
      * Função que lista as categorias e respectivos títulos de jogos publicados por editora
@@ -93,7 +92,7 @@ public class JogoServico {
         //Segundo leitor para realizar a leitura do ficheiro normalmente
         Scanner scanner = new Scanner(ficheiroVendas);
 
-        String linha, linha2, editora, categoria, tituloJogo;
+        String linha, editora, categoria, tituloJogo;
 
         int numeroLinhas = 0;
 
@@ -117,12 +116,12 @@ public class JogoServico {
         int contadorTitulosAdicionados = 0, contadorEditorasAdicionadas = 0, contadorCategoriasAdicionadas = 0;
 
         //Linha de cabeçalho do segundo leitor
-        linha2 = scanner.nextLine();
+        linha = scanner.nextLine();
 
         //Ciclo para preencher a matriz de editoras, categorias e títulos de jogos, sem repetições de títulos
         while (scanner.hasNextLine()) {
-            linha2 = scanner.nextLine();
-            String[] itensLinha = linha2.split(";");
+            linha = scanner.nextLine();
+            String[] itensLinha = linha.split(";");
 
             editora = itensLinha[5];
             categoria = itensLinha[6];
@@ -145,22 +144,27 @@ public class JogoServico {
             }
         }
 
+        //Validação para exibir uma mensagem se a editora não for encontrada
+        boolean editoraEncontrada = false;
+
         //Ciclo para exibir a editora e as categorias apenas uma vez
         for (int linhaMatriz = 0; linhaMatriz < contadorTitulosAdicionados; linhaMatriz++) {
-            if (matrizEditoraCategoriaTituloJogos[linhaMatriz][0].equals(inputEditora)) {
+            if (matrizEditoraCategoriaTituloJogos[linhaMatriz][0].equalsIgnoreCase(inputEditora)) {
+
+                editoraEncontrada = true;
 
                 //Verifica se a editora já foi exibida
                 boolean editoraJaExibida = false;
                 for (int linhaVetorEditoras = 0; linhaVetorEditoras < contadorEditorasAdicionadas; linhaVetorEditoras++) {
-                    if (editorasExibidas[linhaVetorEditoras].equals(inputEditora)) {
+                    if (editorasExibidas[linhaVetorEditoras].equalsIgnoreCase(inputEditora)) {
                         editoraJaExibida = true;
                     }
                 }
 
                 //Se a editora ainda não foi exibida, imprime a editora
                 if (!editoraJaExibida) {
-                    System.out.println("\n*************   " + inputEditora + "   *************");
-                    editorasExibidas[contadorEditorasAdicionadas] = inputEditora;
+                    System.out.println("\n*************   " + matrizEditoraCategoriaTituloJogos[linhaMatriz][0] + "   *************");
+                    editorasExibidas[contadorEditorasAdicionadas] = matrizEditoraCategoriaTituloJogos[linhaMatriz][0];
                     contadorEditorasAdicionadas++;
                 }
 
@@ -183,6 +187,11 @@ public class JogoServico {
                 System.out.println(matrizEditoraCategoriaTituloJogos[linhaMatriz][2]);
 
             }
+        }
+
+        // Exibe uma mensagem se a editora não foi encontrada
+        if (!editoraEncontrada) {
+            System.out.println("A editora informada não foi encontrada: " + inputEditora);
         }
 
         //Fecha os leitores
@@ -228,11 +237,11 @@ public class JogoServico {
             }
         }
 
-        System.out.println("\n*************   Jogo Mais Caro   *************");
+        System.out.println("\n**********************   Jogo Mais Caro   *********************");
         System.out.println("Título: " + tituloJogoMaisCaro);
         System.out.println("Valor: " + valorJogoMaisCaro);
 
-        System.out.println("\n*************   Clientes que compraram   *************");
+        System.out.println("\n******************   Clientes que compraram   *****************");
         System.out.print(listaClientes);
 
         scanner.close();
