@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import static gamestart.servicos.VendaServico.*;
 import static gamestart.servicos.ClienteServico.*;
+import static gamestart.servicos.JogoServico.*;
 
 public class MenuAdmin {
     /**
@@ -49,9 +50,8 @@ public class MenuAdmin {
                     exibirJogoMaisCaro();
                     break;
                 case "6":
-                    System.out.print("Insira o id do cliente: ");
-                    inputIdCliente = inputUser.nextLine();
-                    consultarVendasPorCliente(inputIdCliente);
+                    exibirMelhorCliente();
+
                     break;
                 case "7":
                     break;

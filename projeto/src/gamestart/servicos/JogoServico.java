@@ -19,10 +19,7 @@ public class JogoServico {
         //Primeiro leitor para determinar o número de linhas
         Scanner scannerLinhas = new Scanner(ficheiroVendas);
 
-        //Segundo leitor para realizar a leitura do ficheiro normalmente
-        Scanner scanner = new Scanner(ficheiroVendas);
-
-        String linha, linha2, tituloJogo;
+        String linha, tituloJogo;
 
         int numeroLinhas = 0;
 
@@ -40,13 +37,16 @@ public class JogoServico {
         //contador para verificar quantos títulos (não duplicados) serão adicionados na matriz de títulos de jogos
         int contadorTitulosAdicionados = 0;
 
+        //Segundo leitor para realizar a leitura do ficheiro
+        Scanner scanner = new Scanner(ficheiroVendas);
+
         //Linha de cabeçalho do segundo leitor
-        linha2 = scanner.nextLine();
+        linha = scanner.nextLine();
 
         //Ciclo para preencher a matriz de título de jogos, sem repetições
         while (scanner.hasNextLine()) {
-            linha2 = scanner.nextLine();
-            String[] itensLinha = linha2.split(";");
+            linha = scanner.nextLine();
+            String[] itensLinha = linha.split(";");
             tituloJogo = itensLinha[7];
 
             //Verifica se o título já foi adicionado na matriz
@@ -64,7 +64,7 @@ public class JogoServico {
             }
         }
 
-        System.out.println("\n************************     Jogos     ************************\n");
+        System.out.println("\n************************     Jogos Disponíveis     ************************\n");
 
         //Ciclo para exibir a matriz de títulos de jogos não duplicados
         for (int j = 0; j < contadorTitulosAdicionados; j++) {
@@ -189,4 +189,54 @@ public class JogoServico {
         scannerLinhas.close();
         scanner.close();
     }
+
+    /**
+     * Função que exibe o jogo mais caro vendido e os clientes que o compraram
+     *
+     * @throws FileNotFoundException
+     */
+    public static void exibirJogoMaisCaro() throws FileNotFoundException {
+        //Caminho do ficheiro
+        File ficheiroVendas = new File(VendaServico.obterFicheiroVendas());
+
+        //Leitor do ficheiro
+        Scanner scanner = new Scanner(ficheiroVendas);
+
+        String linha, tituloJogoMaisCaro = "", listaClientes = "";
+        String[] itensLinha;
+        double valorJogoAtual, valorJogoMaisCaro = 0;
+
+        //Linha de cabeçalho do leitor
+        linha = scanner.nextLine();
+
+        //Ciclo para encontrar o jogo mais caro
+        while (scanner.hasNextLine()) {
+            linha = scanner.nextLine();
+            itensLinha = linha.split(";");
+            valorJogoAtual = Double.parseDouble(itensLinha[8]);
+
+            if (valorJogoAtual > valorJogoMaisCaro) {
+                tituloJogoMaisCaro = itensLinha[7];
+                valorJogoMaisCaro = valorJogoAtual;
+
+                //inicia uma lista de clientes, para o caso de haver mais clientes que compraram o mesmo jogo
+                listaClientes = itensLinha[2] + "\n";
+            }
+            //Verifica se o valor do jogo da linha atual é igual ao valor do jogo mais caro, adiciona o cliente a lista dos que compraram o mesmo jogo
+            else if (valorJogoAtual == valorJogoMaisCaro) {
+                listaClientes += itensLinha[2] + "\n";
+            }
+        }
+
+        System.out.println("\n*************   Jogo Mais Caro   *************");
+        System.out.println("Título: " + tituloJogoMaisCaro);
+        System.out.println("Valor: " + valorJogoMaisCaro);
+
+        System.out.println("\n*************   Clientes que compraram   *************");
+        System.out.print(listaClientes);
+
+        scanner.close();
+
+    }
+
 }

@@ -65,7 +65,7 @@ public class VendaServico {
             contadorVendas++;
         }
         System.out.println("Número total de vendas: " + contadorVendas);
-        System.out.printf("Valor total de vendas: %.2f€ %n", +totalVendas);
+        System.out.printf("Valor total de vendas: %.2f€ %n", totalVendas);
 
         //Fecha o leitor
         leitor.close();
@@ -111,9 +111,10 @@ public class VendaServico {
 
 
     /**
-     * Função que armazena os dados do ficheiro em uma matriz e retorna esta matriz preenchida
+     * Função que armazena os dados do ficheiro de vendas em uma matriz e retorna esta matriz
      *
      * @return - String[][]
+     * @throws FileNotFoundException
      */
     public static String[][] obterMatrizVendas() throws FileNotFoundException {
 
@@ -165,22 +166,24 @@ public class VendaServico {
     }
 
     /**
-     * Função que consulta as vendas por idCliente
+     * Função que consulta a matriz de todas as vendas, gera uma matriz de vendas por cliente e retorna esta matriz a partir de um idCliente
      *
      * @param idCliente
+     * @return - String[][]
      * @throws FileNotFoundException
      */
-    public static void consultarVendasPorCliente(String idCliente) throws FileNotFoundException {
+    public static String[][] obterMatrizVendasPorCliente(String idCliente) throws FileNotFoundException {
         String[][] matrizVendas = obterMatrizVendas();
         int numLinhasMatrizVendaCliente = 0;
 
+        //Ciclo para obter o número de linhas da matriz de vendas por cliente que será criada
         for (int i = 0; i < matrizVendas.length; i++) {
             if (matrizVendas[i][1].equals(idCliente)) {
                 numLinhasMatrizVendaCliente++;
             }
         }
 
-        //Cria a matriz de vendas por cliente
+        //Cria a matriz de vendas por cliente e preenche apenas com as vendas de um cliente específico
         String[][] matrizVendasCliente = new String[numLinhasMatrizVendaCliente][9];
         int linhaVendaCliente = 0;
 
@@ -193,12 +196,59 @@ public class VendaServico {
             }
         }
 
-        for (int i = 0; i < matrizVendasCliente.length; i++) {
-            for (int j = 0; j < matrizVendasCliente[i].length; j++) {
-                System.out.print(matrizVendasCliente[i][j] + " ");
-            }
-            System.out.println();
-        }
+        return matrizVendasCliente;
 
     }
-}
+
+    /**
+     * Função que consulta a matriz de vendas por cliente (a partir de um idCliente) e calcula o total de vendas do cliente
+     *
+     * @param idCliente
+     * @return - double
+     * @throws FileNotFoundException
+     */
+    public static double calcularTotalVendasCliente(String idCliente) throws FileNotFoundException {
+        String[][] matrizVendasCliente = obterMatrizVendasPorCliente(idCliente);
+
+        double valorJogo, totalVendasCliente = 0;
+
+        //Ciclo para percorrer as linhas da matriz e somar os valores dos jogos
+        for (int i = 0; i < matrizVendasCliente.length; i++) {
+            valorJogo = Double.parseDouble(matrizVendasCliente[i][8]);
+            totalVendasCliente += valorJogo;
+        }
+
+        return totalVendasCliente;
+
+    }
+
+    /**
+     * Função que consulta a matriz de clientes para gerar uma matriz com o total de gastos dos clientes
+     *
+     * @return - String[][]
+     * @throws FileNotFoundException
+     */
+    public static String[][] obterMatrizTotalGastoPorCliente() throws FileNotFoundException {
+        String[][] matrizClientes = ClienteServico.obterMatrizClientes();
+
+        //Cria uma matriz (a partir da matriz de clientes) com um campo a mais para inserir o total de compras deste cliente
+        String[][] matrizTotalGastoCliente = new String[matrizClientes.length][matrizClientes[0].length+1];
+        String idCliente;
+        double totalGastoCliente = 0;
+
+        //Percorre a matriz de cliente, obtém o id do cliente e preenche a matriz de gastos do cliente
+        for (int i = 0; i < matrizClientes.length; i++) {
+            for (int j = 0; j < matrizClientes[i].length; j++){
+                matrizTotalGastoCliente[i][j] = matrizClientes[i][j];
+            }
+            idCliente = matrizClientes[i][0];
+
+            //Calcula o total de gastos do cliente a partir do id do cliente
+            totalGastoCliente = calcularTotalVendasCliente(idCliente);
+
+            //Insere o total de gastos na última coluna da matriz
+            matrizTotalGastoCliente[i][matrizClientes[i].length] = String.valueOf(totalGastoCliente);
+        }
+            return matrizTotalGastoCliente;
+        }
+    }
