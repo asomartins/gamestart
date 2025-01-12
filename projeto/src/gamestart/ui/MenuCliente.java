@@ -31,7 +31,7 @@ public class MenuCliente {
 
             switch (opcao) {
                 case "1":
-                    inserirNovoCliente();
+                    inserirCliente();
                     break;
                 case "2":
                     verificarVagasEstacionamento();

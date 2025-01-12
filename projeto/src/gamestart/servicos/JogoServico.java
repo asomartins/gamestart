@@ -109,7 +109,7 @@ public class JogoServico {
         //Matriz para editoras, categorias e títulos de jogos
         String[][] matrizEditoraCategoriaTituloJogos = new String[numeroLinhas][3];
 
-        //Arrays para rastrear editoras e categorias únicas
+        //Arrays para guardar as editoras e categorias únicas
         String[] editorasExibidas = new String[numeroLinhas];
         String[] categoriasExibidas = new String[numeroLinhas];
 

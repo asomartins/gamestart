@@ -30,7 +30,6 @@ public class GameStartMain {
                 "        GGGGGG   GGGG  aaaaaaaaaa  aaaammmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee         sssssssssss              ttttttttttt    aaaaaaaaaa  aaaarrrrrrr                      ttttttttttt  \n" +
                 "                                                                                                                                                                                            \n" +
                 "                                                                                                                                                                                            \n" +
-                "                                                                                                                                                                                            \n" +
                 "                                                                                                                                                                                            \n");
 
         exibirMenuTipoUsuario();

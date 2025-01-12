@@ -12,7 +12,7 @@ public class ClienteServico {
      *
      * @throws FileNotFoundException
      */
-    public static void inserirNovoCliente() throws FileNotFoundException {
+    public static void inserirCliente() throws FileNotFoundException {
         System.out.println("\n***************************************************************");
         System.out.println("::: Menu - CLIENTE ::: -> Inserir novo cliente");
         System.out.print("Insira o nome: ");
@@ -50,14 +50,14 @@ public class ClienteServico {
      * @param inputIdCliente
      * @throws FileNotFoundException
      */
-    public static void exibirInformacoesCliente(String inputIdCliente) throws FileNotFoundException {
+    public static void consultarCliente(String inputIdCliente) throws FileNotFoundException {
         //Caminho do ficheiro
         File ficheiroVendas = new File(VendaServico.obterFicheiroVendas());
 
-        //Leitor para realizar a leitura do ficheiro normalmente
+        //Leitor do ficheiro
         Scanner scanner = new Scanner(ficheiroVendas);
+
         String linha, nomeCliente, contactoCliente, emailCliente;
-        boolean clienteEncontrado = false;
 
         //Linha de cabeçalho do leitor
         linha = scanner.nextLine();
@@ -74,10 +74,71 @@ public class ClienteServico {
                 emailCliente = itensLinha[4];
 
                 //Imprime a informação do cliente
+                System.out.println("\n************************     Cliente     ************************\n");
                 System.out.println("Nome do cliente: " + nomeCliente + "\nContacto: " + contactoCliente + "\nE-mail: " + emailCliente);
                 break;
             }
         }
         scanner.close();
+    }
+
+    /**
+     * Função que exibe o jogo mais caro vendido e os clientes que o compraram
+     *
+     * @throws FileNotFoundException
+     */
+    public static void exibirJogoMaisCaro() throws FileNotFoundException {
+        //Caminho do ficheiro
+        File ficheiroVendas = new File(VendaServico.obterFicheiroVendas());
+
+        //Leitor do ficheiro
+        Scanner leitor1 = new Scanner(ficheiroVendas);
+
+        String linha, jogoMaisCaro = "", nomeCliente = "";
+        String[] itensLinha;
+        double valorJogoAtual, valorJogoMaisCaro = 0;
+
+        //Linha de cabeçalho do leitor
+        linha = leitor1.nextLine();
+
+        //Ciclo para encontrar o jogo mais caro
+        while (leitor1.hasNextLine()) {
+            linha = leitor1.nextLine();
+            itensLinha = linha.split(";");
+            valorJogoAtual = Double.parseDouble(itensLinha[8]);
+
+            if (valorJogoAtual > valorJogoMaisCaro) {
+                jogoMaisCaro = itensLinha[7];
+                valorJogoMaisCaro = valorJogoAtual;
+            }
+        }
+
+        //Segundo leitor para verificar quais os clientes que compraram o jogo mais caro
+        Scanner leitor2 = new Scanner(ficheiroVendas);
+        linha = leitor2.nextLine();
+
+        System.out.println("\n*************   Jogo   *************");
+        System.out.println("Título: " + jogoMaisCaro);
+        System.out.println("Valor: " + valorJogoMaisCaro);
+
+        System.out.println("\n*************   Clientes   *************");
+
+        while (leitor2.hasNextLine()) {
+            linha = leitor2.nextLine();
+            itensLinha = linha.split(";");
+            valorJogoAtual = Double.parseDouble(itensLinha[8]);
+
+            //Verifica se o valor do jogo da linha atual é igual ao valor do jogo mais caro, para o caso de mais de um cliente comprar o mesmo jogo
+            if (valorJogoAtual == valorJogoMaisCaro) {
+                System.out.println(itensLinha[2]);
+            }
+        }
+
+        leitor1.close();
+        leitor2.close();
+    }
+
+    public static void exibirMelhorCliente() {
+
     }
 }

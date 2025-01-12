@@ -43,11 +43,15 @@ public class MenuAdmin {
                 case "4":
                     System.out.print("Insira o id do cliente: ");
                     inputIdCliente = inputUser.nextLine();
-                    exibirInformacoesCliente(inputIdCliente);
+                    consultarCliente(inputIdCliente);
                     break;
                 case "5":
+                    exibirJogoMaisCaro();
                     break;
                 case "6":
+                    System.out.print("Insira o id do cliente: ");
+                    inputIdCliente = inputUser.nextLine();
+                    consultarVendasPorCliente(inputIdCliente);
                     break;
                 case "7":
                     break;
