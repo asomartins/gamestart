@@ -22,26 +22,36 @@ public class ClienteServico {
         String contatoCliente = input.nextLine();
         System.out.print("Insira o e-mail: ");
         String emailCliente = input.nextLine();
-        System.out.println("\nCliente inserido com sucesso:");
-        System.out.print(nomeCliente + "\t|\t");
-        System.out.print(contatoCliente + "\t|\t");
-        System.out.print(emailCliente + "\t|\n\n");
 
-        //Caminho para guardar o ficheiro com o registro do novo cliente
-        File ficheiroCliente = new File("projeto/clientes/cliente_" + nomeCliente + ".txt");
+        //Validação para campos vazios
+        if (nomeCliente.length() == 0) {
+            System.out.println("Não foi possível registrar o cliente. Campo cliente vazio.");
+        } else if (contatoCliente.length() == 0) {
+            System.out.println("Não foi possível registrar o cliente. Campo contato vazio.");
+        } else if (emailCliente.length() == 0) {
+            System.out.println("Não foi possível registrar o cliente. Campo email vazio.");
+        } else {
 
-        //Máquina para escrever no ficheiro
-        PrintWriter maquinaEscrever = new PrintWriter(ficheiroCliente);
+            System.out.println("\nCliente inserido com sucesso:");
+            System.out.print(nomeCliente + "\t|\t");
+            System.out.print(contatoCliente + "\t|\t");
+            System.out.print(emailCliente + "\t|\n\n");
 
-        //Conteúdo do ficheiro
-        String registroCliente = "Nome do cliente: " + nomeCliente + "\nContacto: " + contatoCliente + "\nE-mail: " + emailCliente;
+            //Caminho para guardar o ficheiro com o registro do novo cliente
+            File ficheiroCliente = new File("projeto/clientes/cliente_" + nomeCliente + ".txt");
 
-        //Imprimir no ficheiro
-        maquinaEscrever.println(registroCliente);
+            //Máquina para escrever no ficheiro
+            PrintWriter maquinaEscrever = new PrintWriter(ficheiroCliente);
 
-        //Fechar a máquina
-        maquinaEscrever.close();
+            //Conteúdo do ficheiro
+            String registroCliente = "Nome do cliente: " + nomeCliente + "\nContacto: " + contatoCliente + "\nE-mail: " + emailCliente;
 
+            //Imprimir no ficheiro
+            maquinaEscrever.println(registroCliente);
+
+            //Fechar a máquina
+            maquinaEscrever.close();
+        }
     }
 
     /**
@@ -59,16 +69,20 @@ public class ClienteServico {
 
         String linha, nomeCliente, contactoCliente, emailCliente;
 
+        //Validação para o idcliente
+        boolean clienteEncontrado = false;
+
         //Linha de cabeçalho do leitor
         linha = scanner.nextLine();
 
         //Ciclo para ler o ficheiro
-        while (scanner.hasNextLine()) {
+        while (scanner.hasNextLine() && !clienteEncontrado) {
             linha = scanner.nextLine();
             String[] itensLinha = linha.split(";");
 
             //Verifica se a linha contém o id do cliente
             if (itensLinha[1].equals(inputIdCliente)) {
+                clienteEncontrado = true;
                 nomeCliente = itensLinha[2];
                 contactoCliente = itensLinha[3];
                 emailCliente = itensLinha[4];
@@ -76,8 +90,11 @@ public class ClienteServico {
                 //Imprime a informação do cliente
                 System.out.println("\n***********************     Cliente     ***********************\n");
                 System.out.println("Nome do cliente: " + nomeCliente + "\nContacto: " + contactoCliente + "\nE-mail: " + emailCliente);
-                break;
             }
+        }
+        //Exibe uma mensagem para o id não encontrado
+        if (!clienteEncontrado) {
+            System.out.println("\nCliente não encontrado. Id: " + inputIdCliente);
         }
         scanner.close();
     }
@@ -165,13 +182,13 @@ public class ClienteServico {
     }
 
     /**
-     * Função que exibe o cliente que mais gastou e os respectivos jogos comprados a partir da consulta às matrizes de gastos e de vendas por cliente
+     * Função que exibe o cliente que mais gastou e os jogos comprados a partir da consulta às matrizes de gastos e de vendas por cliente
      *
      * @throws FileNotFoundException
      */
     public static void exibirMelhorCliente() throws FileNotFoundException {
 
-        String idCliente = "", nomeCliente = "", contactoCliente = "", emailCliente = "", tituloJogo, listaTitulosJogos = "";
+        String idCliente = "", nomeCliente = "", contactoCliente = "", emailCliente = "", tituloJogo = "", listaTitulosJogos = "";
         double valorGastoAtual = 0, valorGastoMaisAlto = 0;
 
         //Obtém a matriz de gastos dos clientes

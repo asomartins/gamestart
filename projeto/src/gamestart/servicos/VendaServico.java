@@ -232,13 +232,13 @@ public class VendaServico {
         String[][] matrizClientes = ClienteServico.obterMatrizClientes();
 
         //Cria uma matriz (a partir da matriz de clientes) com um campo a mais para inserir o total de compras deste cliente
-        String[][] matrizTotalGastoCliente = new String[matrizClientes.length][matrizClientes[0].length+1];
+        String[][] matrizTotalGastoCliente = new String[matrizClientes.length][matrizClientes[0].length + 1];
         String idCliente;
         double totalGastoCliente = 0;
 
         //Percorre a matriz de cliente, obtém o id do cliente e preenche a matriz de gastos do cliente
         for (int i = 0; i < matrizClientes.length; i++) {
-            for (int j = 0; j < matrizClientes[i].length; j++){
+            for (int j = 0; j < matrizClientes[i].length; j++) {
                 matrizTotalGastoCliente[i][j] = matrizClientes[i][j];
             }
             idCliente = matrizClientes[i][0];
@@ -249,6 +249,6 @@ public class VendaServico {
             //Insere o total de gastos na última coluna da matriz
             matrizTotalGastoCliente[i][matrizClientes[i].length] = String.valueOf(totalGastoCliente);
         }
-            return matrizTotalGastoCliente;
-        }
+        return matrizTotalGastoCliente;
     }
+}
